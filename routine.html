@@ -1,0 +1,415 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://myclass.midaseclass.com/extra/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* font-family: 'Poppins', sans-serif; */
+        /* font-family: 'Raleway', sans-serif; */
+        body{
+            background:url('./images/home/line-bg.png') no-repeat bottom center / contain;
+        }
+        .main-header{
+            box-shadow:0 2px 10px -5px rgba(0, 2, 2, 0.15);
+            background-color:#fff;
+        }
+        .main-header__content{
+            padding:10px 30px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .main-header__logo a{
+            display:inline-block;
+        }
+       
+        .main-header__action{
+            display:flex;
+            align-items:center;
+        }
+        .main-header__action .btn{
+            color:#fff;
+            background-color: #0C4CA1;
+            font:16px 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing:1.1;
+            transition:all 0.4s;
+        }
+        .main-header__action .btn:hover{
+            background-color: #063470
+        }
+        .main-header__action .btn span{display: none;}
+        
+        .main-header__action .account{
+            margin-left:16px;
+            position: relative;
+          
+        }
+        .main-header__action .account__active{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .main-header__action .account-image{
+            height:40px;
+            width:40px;
+            overflow: hidden;
+            position: relative;
+            background-color: #eee;
+            border-radius: 100px;
+        }
+        .main-header__action .account-image img{
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            width:100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .main-header__action .account-title{
+            display: none;
+        }
+        .main-header__action .account-toggler{
+            margin-left: 16px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .main-header__action .account-dropdown{
+            position:absolute;
+            right:0;
+            top:100%;
+            margin-top: 16px;
+            background-color:#0C4CA1;
+            color:#fff;
+            min-width: 220px;
+            border-radius: 8px;
+            padding:20px 25px;
+            display:none;
+            z-index:99
+        }
+        .main-header__action .account-dropdown::before{
+            content:"";
+            display: inline-block;
+            margin:0 auto;
+            position: absolute;
+            right:24px;
+            top:-4px;
+            height:16px;
+            width:16px;
+            background-color: #0C4CA1;
+            border-radius: 4px;
+            transform:rotate(45deg)
+        }
+        .main-header__action .account-dropdown h2{
+            font:500 20px 'Poppins', sans-serif;
+            margin:0 0 10px;
+        }
+        .main-header__action .account-dropdown ul{
+            list-style-type: none;
+            padding: 0;
+            margin:0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .main-header__action .account-dropdown ul a{
+            color:#fff;
+            display: block;
+            padding:6px 0;
+        }
+        .main-header .account-overlay {
+            background:#000;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index: 1;
+            opacity: 0;
+            display: none;
+        }
+
+        @media  screen and (min-width: 768px){
+            .main-header__action .account{
+                margin-left:32px;
+            }
+            .main-header__action .account-title{
+                display: block;
+                font-size:14px;
+                font-family: 'Poppins', sans-serif;
+                margin-left:16px;
+            }
+            .main-header__action .btn{
+                font-size:10px;
+            }
+            .main-header__action .btn i{display: none; }
+            .main-header__action .btn span{display: block;}
+        }
+
+        .main-body{
+            padding:100px 0 50px;
+            font-size:14px;
+          
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body__header{
+            margin-bottom:30px;
+            text-align:center;
+        }
+        .main-body__title .title{
+            font:800 24px 'Raleway', sans-serif;
+            margin:0;
+            color:#0C4CA1
+        }
+        .main-body__title .title span{
+            color:#FF6565
+        }
+        .main-body__title .description{
+            font:14px 'Poppins', sans-serif;
+            color:#676767
+        }
+
+        .main-body__action .btn{
+            display:inline-block;
+            background-color:#FF6565;
+            color:#fff;
+            border-radius: 4px;
+            padding:10px 15px;
+            text-align: left;
+            line-height: 1.2;
+            padding-right:60px;
+            position: relative;
+            font-size:12px;
+        }
+        .main-body__action .btn:hover{
+            background-color:#ca3b3b;
+        }
+        .main-body__action .btn small{
+            display:block;
+        }
+        .main-body__action .btn  strong{
+            font-weight: 600;
+        }
+        .main-body__action .btn .icon{
+            position: absolute;
+            right:10px;
+            top:15px;
+        }
+
+        @media screen and (min-width: 768px){
+            .main-body__header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+              
+            }
+            .main-body__action .btn{
+                font-size:14px;
+            }
+        }
+
+        .card{
+            border-radius: 4px;
+            background-color: #dedede;
+            padding:25px;
+            display:block;
+            color:#000;
+            font:600 14px 'Poppins', sans-serif;
+            text-decoration: none;
+            text-align: center;
+            margin-bottom:30px;
+            transition:all 0.4s;
+        }
+        .card .card-image{
+            height:150px;
+            width:150px;
+            border-radius: 100%;
+     
+            display: block;
+    
+            overflow:hidden;
+            margin:0 auto 16px;
+        }
+        .card .card-image.card-image--default{
+            height:auto;
+            width:auto;
+            border-radius: 0;
+        }
+       .card .card-image img{
+            max-width:100%;
+            object-fit: contain;
+            object-position: center;
+        }
+
+        .card:hover{
+            text-decoration: none;
+            color:#0C4CA1;
+            box-shadow: 0 5px 10px 1px rgba(0,0,0,0.11);
+        }
+
+        .footer{
+            text-align:center;
+            font-size:12px;
+            padding:16px;
+          
+            font:14px 'Poppins', sans-serif;
+        }
+        .footer a{
+            font-weight:600;
+            color:#0C4CA1
+        }
+        .footer img{
+            margin-bottom:16px;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="main-header__content">
+            <div class="main-header__logo">
+                <a href="">
+                    <img src="logo.png" alt="midaseCLASS"/>
+                </a>
+            </div>
+            <div class="main-header__action">
+                <a href="" class="btn"><i class="fa fa-home"></i><span>Dashboard</span></a>
+                <div class="account">
+                    <div class="account__active">
+                        <div class="account-image">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+                        </div>
+                        <div class="account-title">Sujan Maharjan</div>
+                        <div class="account-toggler"><i class="fa fa-chevron-down"></i></div>
+                    </div>
+                    <div class="account-dropdown">
+                        <h2>Midas Education</h2>
+                        <ul>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Change Password</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="account-overlay"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main-body">
+        <div class="container">
+            <div class="main-body__header">
+                <div class="main-body__title">
+                    <h2 class="title">MiDas eCLASS: <span>Grade TEN</span></h2>
+                    <p class="description">Select from following subjects to proceed</p>
+                </div>
+                <div class="main-body__action">
+                    <a href="" class="btn">
+                        <small>Routine</small>
+                        Click here to View <strong>Class Routine</strong>
+
+                        <span class="icon">
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.5155 2.5H15.6874V3.65385H17.3749V16.3462H1.62513V3.65385H3.3126V2.5H1.4845C1.35301 2.50225 1.22325 2.53105 1.10261 2.58475C0.981974 2.63846 0.872835 2.71601 0.781425 2.81298C0.690015 2.90994 0.618126 3.02443 0.569863 3.1499C0.5216 3.27538 0.49791 3.40937 0.500145 3.54423V16.4558C0.49791 16.5906 0.5216 16.7246 0.569863 16.8501C0.618126 16.9756 0.690015 17.0901 0.781425 17.187C0.872835 17.284 0.981974 17.3615 1.10261 17.4152C1.22325 17.4689 1.35301 17.4977 1.4845 17.5H17.5155C17.647 17.4977 17.7768 17.4689 17.8974 17.4152C18.018 17.3615 18.1272 17.284 18.2186 17.187C18.31 17.0901 18.3819 16.9756 18.4301 16.8501C18.4784 16.7246 18.5021 16.5906 18.4999 16.4558V3.54423C18.5021 3.40937 18.4784 3.27538 18.4301 3.1499C18.3819 3.02443 18.31 2.90994 18.2186 2.81298C18.1272 2.71601 18.018 2.63846 17.8974 2.58475C17.7768 2.53105 17.647 2.50225 17.5155 2.5Z" fill="white"/>
+                                <path d="M3.5 7.5H5.5V8.5H3.5V7.5Z" fill="white"/>
+                                <path d="M7.5 7.5H8.5V8.5H7.5V7.5Z" fill="white"/>
+                                <path d="M10.5 7.5H11.5V8.5H10.5V7.5Z" fill="white"/>
+                                <path d="M13.5 7.5H15.5V8.5H13.5V7.5Z" fill="white"/>
+                                <path d="M3.5 10.5H5.5V11.5H3.5V10.5Z" fill="white"/>
+                                <path d="M7.5 10.5H8.5V11.5H7.5V10.5Z" fill="white"/>
+                                <path d="M10.5 10.5H11.5V11.5H10.5V10.5Z" fill="white"/>
+                                <path d="M13.5 10.5H15.5V11.5H13.5V10.5Z" fill="white"/>
+                                <path d="M3.5 13.5H5.5V14.5H3.5V13.5Z" fill="white"/>
+                                <path d="M7.5 13.5H8.5V14.5H7.5V13.5Z" fill="white"/>
+                                <path d="M10.5 13.5H11.5V14.5H10.5V13.5Z" fill="white"/>
+                                <path d="M13.5 13.5H15.5V14.5H13.5V13.5Z" fill="white"/>
+                                <path d="M5 5.5C5.13261 5.5 5.25979 5.43415 5.35355 5.31694C5.44732 5.19973 5.5 5.04076 5.5 4.875V1.125C5.5 0.95924 5.44732 0.800268 5.35355 0.683058C5.25979 0.565848 5.13261 0.5 5 0.5C4.86739 0.5 4.74021 0.565848 4.64645 0.683058C4.55268 0.800268 4.5 0.95924 4.5 1.125V4.875C4.5 5.04076 4.55268 5.19973 4.64645 5.31694C4.74021 5.43415 4.86739 5.5 5 5.5Z" fill="white"/>
+                                <path d="M14 5.5C14.1326 5.5 14.2598 5.43415 14.3536 5.31694C14.4473 5.19973 14.5 5.04076 14.5 4.875V1.125C14.5 0.95924 14.4473 0.800268 14.3536 0.683058C14.2598 0.565848 14.1326 0.5 14 0.5C13.8674 0.5 13.7402 0.565848 13.6464 0.683058C13.5527 0.800268 13.5 0.95924 13.5 1.125V4.875C13.5 5.04076 13.5527 5.19973 13.6464 5.31694C13.7402 5.43415 13.8674 5.5 14 5.5Z" fill="white"/>
+                                <path d="M6.5 2.5H12.5V3.5H6.5V2.5Z" fill="white"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card" style="background-color:#ACE0F0">
+                        <span class="card-image card-image--default">
+                            <img src="images/routine/1.png" alt=""/>
+                        </span>
+                        <span class="title">Science</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card"  style="background-color:#FBD661">
+                        <span class="card-image  card-image--default">
+                            <img src="images/routine/2.png" alt=""/>
+                        </span>
+                        <span class="title">Mathematics</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card"  style="background-color:#ABEBF1">
+                        <span class="card-image  card-image--default">
+                            <img src="images/routine/3.png" alt=""/>
+                        </span>
+                        <span class="title">Optional Math</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card"  style="background-color:#EEF5C9">
+                        <span class="card-image  card-image--default">
+                            <img src="images/routine/4.png" alt=""/>
+                        </span>
+                        <span class="title">Social Studies</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card"  style="background-color:#ABD429">
+                        <span class="card-image  card-image--default">
+                            <img src="images/routine/5.png" alt=""/>
+                        </span>
+                        <span class="title">English</span>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <a href="#" class="card"  style="background-color:#DBB47B">
+                        <span class="card-image  card-image--default">
+                            <img src="images/routine/6.png" alt=""/>
+                        </span>
+                        <span class="title">Nepali</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <img src="./images/home/midas-apps.png" alt="" >
+        <p>Technical Support (7AM to 9 PM)<br/>
+        9851184879, 9801181587, 01-4244461</p>
+        <p>Powered By <a href="">Midas Education Pvt. Ltd.</a></p>
+    </footer>
+
+
+    <script src="https://myclass.midaseclass.com/extra/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".main-header .account__active").on("click", function(){
+                $(".main-header .account .account-dropdown").fadeToggle('300');
+                $(".main-header .account-overlay").fadeToggle('300');
+            })
+
+            $(document).on("click", '.main-header .account-overlay', function(e){
+                $(".main-header .account .account-dropdown").fadeOut('300');
+                $(this).hide();
+            })
+        })
+    </script>
+</body>
+</html>

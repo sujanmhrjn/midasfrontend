@@ -1,0 +1,974 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://myclass.midaseclass.com/extra/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* font-family: 'Poppins', sans-serif; */
+        /* font-family: 'Raleway', sans-serif; */
+        body{
+            background:url('./images/home/line-bg.png') no-repeat bottom center / contain;
+        }
+        .main-header{
+            box-shadow:0 2px 10px -5px rgba(0, 2, 2, 0.15);
+            background-color:#fff;
+        }
+        .main-header__content{
+            padding:10px 30px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .main-header__logo a{
+            display:inline-block;
+        }
+       
+        .main-header__action{
+            display:flex;
+            align-items:center;
+        }
+        .main-header__action .btn{
+            color:#fff;
+            background-color: #0C4CA1;
+            font:16px 'Poppins', sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing:1.1;
+            transition:all 0.4s;
+        }
+        .main-header__action .btn:hover{
+            background-color: #063470
+        }
+        .main-header__action .btn span{display: none;}
+        
+        .main-header__action .account{
+            margin-left:16px;
+            position: relative;
+          
+        }
+        .main-header__action .account__active{
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .main-header__action .account-image{
+            height:40px;
+            width:40px;
+            overflow: hidden;
+            position: relative;
+            background-color: #eee;
+            border-radius: 100px;
+        }
+        .main-header__action .account-image img{
+            position:absolute;
+            top:0;
+            left:0;
+            height:100%;
+            width:100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .main-header__action .account-title{
+            display: none;
+        }
+        .main-header__action .account-toggler{
+            margin-left: 16px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .main-header__action .account-dropdown{
+            position:absolute;
+            right:0;
+            top:100%;
+            margin-top: 16px;
+            background-color:#0C4CA1;
+            color:#fff;
+            min-width: 220px;
+            border-radius: 8px;
+            padding:20px 25px;
+            display:none;
+            z-index:99
+        }
+        .main-header__action .account-dropdown::before{
+            content:"";
+            display: inline-block;
+            margin:0 auto;
+            position: absolute;
+            right:24px;
+            top:-4px;
+            height:16px;
+            width:16px;
+            background-color: #0C4CA1;
+            border-radius: 4px;
+            transform:rotate(45deg)
+        }
+        .main-header__action .account-dropdown h2{
+            font:500 20px 'Poppins', sans-serif;
+            margin:0 0 10px;
+        }
+        .main-header__action .account-dropdown ul{
+            list-style-type: none;
+            padding: 0;
+            margin:0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+        .main-header__action .account-dropdown ul a{
+            color:#fff;
+            display: block;
+            padding:6px 0;
+        }
+        .main-header .account-overlay {
+            background:#000;
+            position:fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index: 1;
+            opacity: 0;
+            display: none;
+        }
+
+        @media  screen and (min-width: 768px){
+            .main-header__action .account{
+                margin-left:32px;
+            }
+            .main-header__action .account-title{
+                display: block;
+                font-size:14px;
+                font-family: 'Poppins', sans-serif;
+                margin-left:16px;
+            }
+            .main-header__action .btn{
+                font-size:10px;
+            }
+            .main-header__action .btn i{display: none; }
+            .main-header__action .btn span{display: block;}
+        }
+
+        .main-body{
+            padding:50px 0 10px;
+            font-size:14px;
+          
+            font-family: 'Poppins', sans-serif;
+        }
+        .main-body__header{
+            margin-bottom:30px;
+            text-align:center;
+        }
+        .main-body__title .title{
+            font:800 24px 'Raleway', sans-serif;
+            margin:0;
+            color:#0C4CA1
+        }
+        .main-body__title .description{
+            font:14px 'Poppins', sans-serif;
+            color:#676767
+        }
+
+        .main-body__action .btn{
+            display:inline-block;
+            background-color:#FF6565;
+            color:#fff;
+            border-radius: 4px;
+            padding:10px 15px;
+            text-align: left;
+            line-height: 1.2;
+            padding-right:60px;
+            position: relative;
+            font-size:12px;
+            max-width: 100%;
+        }
+        .main-body__action .btn:hover{
+            background-color:#ca3b3b;
+        }
+        .main-body__action .btn small{
+            display:block;
+        }
+        .main-body__action .btn  strong{
+            font-weight: 600;
+        }
+        .main-body__action .btn .icon{
+            position: absolute;
+            right:10px;
+            top:50%;
+            transform:translateY(-50%)
+        }
+
+        @media screen and (min-width: 768px){
+            .main-body__header{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+              
+            }
+            .main-body__action .btn{
+                font-size:14px;
+            }
+        }
+
+        
+
+        .footer{
+            text-align:center;
+            font-size:12px;
+            padding:16px;
+          
+            font:14px 'Poppins', sans-serif;
+        }
+        .footer a{
+            font-weight:600;
+            color:#0C4CA1
+        }
+        .footer img{
+            margin-bottom:16px;
+        }
+
+        .card{
+            background-color: #F4F4F4;
+            border:1px solid #EFEFEF;
+            padding:16px;
+            display:flex;
+            align-items: center;
+            margin-bottom:30px;
+            text-decoration: none;
+            color:#000;
+            border-radius: 4px;
+            transition: all 0.4s;
+        }
+        .card:hover {
+            text-decoration: none;
+            color:#0C4CA1;
+            box-shadow: 0 5px 10px 1px rgba(0,0,0,0.11);
+        }
+        
+        .card .card-image{
+            height:70px;
+            width:70px;
+            flex: 0 0 70px;
+            background-color: #fff;
+            border:1px solid #EFEFEF;
+            border-radius: 100px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding:10px;
+            margin-right:16px;
+        }
+
+        .card .card-image img{
+            object-fit: contain;
+            max-height: 100%;
+            max-width: 100%;
+            display: block;
+        }
+
+        .card .title{
+            font-weight: 600;
+            display: block;
+            line-height: 1.2;
+        
+        }
+
+        .slide-over .slide-over__overlay{
+            background-color: rgba(0,0,0,0.4);
+            position: fixed;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            display: none;
+        }
+        .slide-over .slide-over__content{
+            position: fixed;
+            top:0;
+            bottom:0;
+            right:0;
+            max-width: 517px;
+            width:100%;
+            transform:translateX(100%);
+            background-color: #fff;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+            transition:all 0.4s;
+           
+        }
+
+        @media screen and (min-width:767px){
+            .slide-over .slide-over__content{
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+            }
+        }
+
+
+        .slide-over .close{
+            height: 30px;
+            width:30px;
+            border-radius: 100px;
+            position: fixed;
+            right:20px;
+            top:20px;
+            padding:8px;
+            z-index:1;
+            opacity: 1;
+            display: none;
+            background-color:#dd5353 ;
+            transition: all 0.3s;
+
+        }
+        @media screen and (min-width:767px){
+            .slide-over .slide-over__content{
+                border-top-left-radius: 50px;
+                border-bottom-left-radius: 50px;
+            }
+            .slide-over .close{
+                background-color: #fff;
+                position: absolute;
+                left:-50px;
+                right:auto;
+            }
+        }
+        .slide-over .close svg{
+            height: 100%;
+            width: 100%;
+        }
+        .slide-over .close svg,
+        .slide-over .close svg *{
+            stroke:#fff;
+            transition: all 0.3s;
+        }
+        .slide-over .close:hover{
+            background-color: #dd5353;
+            
+        }
+        .slide-over .close:hover svg,
+        .slide-over .close:hover svg * {
+            stroke: #fff;
+        }
+
+        @media screen and (min-width:767px){
+            .slide-over .close svg,
+            .slide-over .close svg *{
+                stroke:#FF6565;
+            }
+        }
+
+
+        .slide-over.active .slide-over__overlay,
+        .slide-over.active .close{
+            display: block;
+        }
+        .slide-over.active .slide-over__content{
+            transform:translateX(0)
+        }
+
+        .slide-content{
+            padding:24px;
+            overflow: auto;
+            max-height: 100vh;
+        }
+
+        @media screen and (min-width:767px){
+            .slide-content{
+                padding:24px 50px;
+            }
+        }
+
+        .slide-content h2{
+            font:700 24px 'Poppins', sans-serif;
+            text-transform: uppercase;
+            color:#0C4CA1;
+            margin-bottom:24px;
+        }
+        .slide-content .content-block{
+            margin-bottom:16px;
+            padding-bottom:16px;
+            border-bottom:1px dashed #cccccc;
+        }
+        .slide-content .content-block .title{
+            font:700 20px 'Poppins', sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .slide-content .content-block .list{
+            margin:0;
+            padding:0;
+            list-style-type: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            color:#676767;
+        }
+        .slide-content .content-block .list .list-li{
+            display: flex;
+            width:100%;
+            margin-bottom: 10px;
+            
+        }
+        .slide-content .content-block .list .list-li:last-child{
+            margin-bottom: 0;
+        }
+        .slide-content .content-block .list .list-li__title{
+
+            position: relative;
+            display: flex;
+            max-width:60%;
+            flex:0 0 60%;
+        
+        }
+
+        @media screen and (min-width:767px){
+            .slide-content .content-block .list .list-li__title{
+                max-width:40%;
+                flex:0 0 40%;
+            }
+        }
+
+        .slide-content .content-block .list .list-li__title .color-box{
+            height:12px;
+            width:12px;
+            display: block;
+            border-radius: 100px;
+            margin-top:4px;
+            margin-right: 8px;
+
+        }
+
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="main-header__content">
+            <div class="main-header__logo">
+                <a href="">
+                    <img src="logo.png" alt="midaseCLASS"/>
+                </a>
+            </div>
+            <div class="main-header__action">
+                <a href="" class="btn"><i class="fa fa-home"></i><span>Dashboard</span></a>
+                <div class="account">
+                    <div class="account__active">
+                        <div class="account-image">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"/>
+                        </div>
+                        <div class="account-title">Sujan Maharjan</div>
+                        <div class="account-toggler"><i class="fa fa-chevron-down"></i></div>
+                    </div>
+                    <div class="account-dropdown">
+                        <h2>Midas Education</h2>
+                        <ul>
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Change Password</a></li>
+                            <li><a href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="account-overlay"></div>
+            </div>
+        </div>
+    </header>
+    <main class="main-body">
+        <div class="container">
+            <div class="main-body__header">
+                <div class="main-body__title">
+                    <h2 class="title">Science</h2>
+                    <p class="description">Select from following subjects to proceed</p>
+                </div>
+                <div class="main-body__action">
+                    <a href="" class="btn slide-over--toggler">
+                        <small>Learning Analysis</small>
+                        Click here to see all your learning points
+
+                        <span class="icon">
+                            <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.42916 17.6431C7.42916 17.3969 7.52699 17.1607 7.70111 16.9866C7.87524 16.8125 8.11141 16.7146 8.35766 16.7146H25.0706C25.3169 16.7146 25.5531 16.8125 25.7272 16.9866C25.9013 17.1607 25.9991 17.3969 25.9991 17.6431C25.9991 17.8894 25.9013 18.1256 25.7272 18.2997C25.5531 18.4738 25.3169 18.5716 25.0706 18.5716H8.35766C8.11141 18.5716 7.87524 18.4738 7.70111 18.2997C7.52699 18.1256 7.42916 17.8894 7.42916 17.6431ZM7.42916 10.2151C7.42916 9.96889 7.52699 9.73272 7.70111 9.5586C7.87524 9.38447 8.11141 9.28664 8.35766 9.28664H25.0706C25.3169 9.28664 25.5531 9.38447 25.7272 9.5586C25.9013 9.73272 25.9991 9.96889 25.9991 10.2151C25.9991 10.4614 25.9013 10.6976 25.7272 10.8717C25.5531 11.0458 25.3169 11.1436 25.0706 11.1436H8.35766C8.11141 11.1436 7.87524 11.0458 7.70111 10.8717C7.52699 10.6976 7.42916 10.4614 7.42916 10.2151ZM7.42916 2.78716C7.42916 2.5409 7.52699 2.30474 7.70111 2.13061C7.87524 1.95648 8.11141 1.85866 8.35766 1.85866H25.0706C25.3169 1.85866 25.5531 1.95648 25.7272 2.13061C25.9013 2.30474 25.9991 2.5409 25.9991 2.78716C25.9991 3.03341 25.9013 3.26958 25.7272 3.4437C25.5531 3.61783 25.3169 3.71565 25.0706 3.71565H8.35766C8.11141 3.71565 7.87524 3.61783 7.70111 3.4437C7.52699 3.26958 7.42916 3.03341 7.42916 2.78716ZM5.30104 0.272781C5.38751 0.359031 5.45611 0.461492 5.50292 0.574295C5.54973 0.687099 5.57382 0.808029 5.57382 0.930158C5.57382 1.05229 5.54973 1.17322 5.50292 1.28602C5.45611 1.39883 5.38751 1.50129 5.30104 1.58754L2.51555 4.37303C2.4293 4.4595 2.32684 4.5281 2.21403 4.57491C2.10123 4.62172 1.9803 4.64581 1.85817 4.64581C1.73604 4.64581 1.61511 4.62172 1.50231 4.57491C1.3895 4.5281 1.28704 4.4595 1.20079 4.37303L0.272295 3.44453C0.185967 3.3582 0.117487 3.25572 0.070767 3.14293C0.0240466 3.03013 1.28639e-09 2.90924 0 2.78716C-1.28639e-09 2.66507 0.0240466 2.54418 0.070767 2.43139C0.117487 2.31859 0.185967 2.21611 0.272295 2.12978C0.358623 2.04345 0.461109 1.97497 0.573902 1.92825C0.686695 1.88153 0.807585 1.85748 0.929671 1.85748C1.05176 1.85748 1.17265 1.88153 1.28544 1.92825C1.39823 1.97497 1.50072 2.04345 1.58705 2.12978L1.85817 2.40276L3.98629 0.272781C4.07254 0.186313 4.175 0.117711 4.2878 0.0709026C4.40061 0.0240943 4.52154 0 4.64367 0C4.7658 0 4.88672 0.0240943 4.99953 0.0709026C5.11233 0.117711 5.21479 0.186313 5.30104 0.272781ZM5.30104 7.70077C5.38751 7.78702 5.45611 7.88948 5.50292 8.00228C5.54973 8.11509 5.57382 8.23602 5.57382 8.35815C5.57382 8.48028 5.54973 8.60121 5.50292 8.71401C5.45611 8.82681 5.38751 8.92927 5.30104 9.01552L2.51555 11.801C2.4293 11.8875 2.32684 11.9561 2.21403 12.0029C2.10123 12.0497 1.9803 12.0738 1.85817 12.0738C1.73604 12.0738 1.61511 12.0497 1.50231 12.0029C1.3895 11.9561 1.28704 11.8875 1.20079 11.801L0.272295 10.8725C0.0979474 10.6982 0 10.4617 0 10.2151C0 9.96858 0.0979474 9.73211 0.272295 9.55777C0.446642 9.38342 0.683107 9.28547 0.929671 9.28547C1.17624 9.28547 1.4127 9.38342 1.58705 9.55777L1.85817 9.83074L3.98629 7.70077C4.07254 7.6143 4.175 7.5457 4.2878 7.49889C4.40061 7.45208 4.52154 7.42799 4.64367 7.42799C4.7658 7.42799 4.88672 7.45208 4.99953 7.49889C5.11233 7.5457 5.21479 7.6143 5.30104 7.70077ZM5.30104 15.1288C5.38751 15.215 5.45611 15.3175 5.50292 15.4303C5.54973 15.5431 5.57382 15.664 5.57382 15.7861C5.57382 15.9083 5.54973 16.0292 5.50292 16.142C5.45611 16.2548 5.38751 16.3573 5.30104 16.4435L2.51555 19.229C2.4293 19.3155 2.32684 19.3841 2.21403 19.4309C2.10123 19.4777 1.9803 19.5018 1.85817 19.5018C1.73604 19.5018 1.61511 19.4777 1.50231 19.4309C1.3895 19.3841 1.28704 19.3155 1.20079 19.229L0.272295 18.3005C0.0979474 18.1262 0 17.8897 0 17.6431C0 17.3966 0.0979474 17.1601 0.272295 16.9858C0.446642 16.8114 0.683107 16.7135 0.929671 16.7135C1.17624 16.7135 1.4127 16.8114 1.58705 16.9858L1.85817 17.2587L3.98629 15.1288C4.07254 15.0423 4.175 14.9737 4.2878 14.9269C4.40061 14.8801 4.52154 14.856 4.64367 14.856C4.7658 14.856 4.88672 14.8801 4.99953 14.9269C5.11233 14.9737 5.21479 15.0423 5.30104 15.1288Z" fill="white"/>
+                            </svg>  
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/notice.png" alt=""/>
+                        </span>
+                        <span class="title">Notices</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/see.png" alt=""/>
+                        </span>
+                        <span class="title">Specification Grid</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/force.png" alt=""/>
+                        </span>
+                        <span class="title">Force</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/pressure.png" alt=""/>
+                        </span>
+                        <span class="title">Pressure</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/energy.png" alt=""/>
+                        </span>
+                        <span class="title">Energy</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/heat.png" alt=""/>
+                        </span>
+                        <span class="title">Heat</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/light.png" alt=""/>
+                        </span>
+                        <span class="title">Light</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/electricity.png" alt=""/>
+                        </span>
+                        <span class="title">Electricity and  magnetism</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/classifications.png" alt=""/>
+                        </span>
+                        <span class="title">Classification of elements</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/notice.png" alt=""/>
+                        </span>
+                        <span class="title">Specification Grid</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/chemical-reactions.png" alt=""/>
+                        </span>
+                        <span class="title">Chemical reactions and equations</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/metals.png" alt=""/>
+                        </span>
+                        <span class="title">Metals</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/hydrocarbon.png" alt=""/>
+                        </span>
+                        <span class="title">Hydrocarbon and its compounds</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/materials.png" alt=""/>
+                        </span>
+                        <span class="title">Materials used in daily life</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/invertebrates.png" alt=""/>
+                        </span>
+                        <span class="title">Invertebrates</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/nervous-system.png" alt=""/>
+                        </span>
+                        <span class="title">Human nervous system and  glandular system</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/circulatory.png" alt=""/>
+                        </span>
+                        <span class="title">Circulatory System</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/chromosome.png" alt=""/>
+                        </span>
+                        <span class="title">Chromosome and sex determination</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/reproduction.png" alt=""/>
+                        </span>
+                        <span class="title">Asexual and sexual reproduction</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/notice.png" alt=""/>
+                        </span>
+                        <span class="title">Environment pollution and  management</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/earth.png" alt=""/>
+                        </span>
+                        <span class="title">History of the earth</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/heredity.png" alt=""/>
+                        </span>
+                        <span class="title">Heredity</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/gases.png" alt=""/>
+                        </span>
+                        <span class="title">Some Gases</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/climate.png" alt=""/>
+                        </span>
+                        <span class="title">Climate change and atmosphere</span>
+                    </a>
+                </div>
+
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/acid.png" alt=""/>
+                        </span>
+                        <span class="title">Acid, base and salt</span>
+                    </a>
+                </div>
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                    <a href="#" class="card">
+                        <span class="card-image">
+                            <img src="images/subjects/universe.png" alt=""/>
+                        </span>
+                        <span class="title">The earth in the universe</span>
+                    </a>
+                </div>
+                
+                
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+       
+        <p>Technical Support (7AM to 9 PM)<br/>
+        9851184879, 9801181587, 01-4244461</p>
+        <p>Powered By <a href="">Midas Education Pvt. Ltd.</a></p>
+    </footer>
+    <div class="slide-over ">
+        <div class="slide-over__overlay"></div>
+        
+        <div class="slide-over__content">
+            <div class="close">
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.4744 3.80762L3.80769 18.4743M18.4744 18.4743L3.80769 3.80762L18.4744 18.4743Z" stroke="#FF6565" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </div>
+
+            <div class="slide-content">
+                <h2>My Learning Analysis</h2>
+
+                <div class="content-block">
+                    <div class="title">Video Lessons Learned</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #0A4B9D;"></span>
+                                Total Video:
+                            </div>
+                            <div class="list-li__text">637</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #78A643;"></span>
+                                Watch Time:
+                            </div>
+                            <div class="list-li__text">924 mins</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #C95F35;"></span>
+                                Videos Viewed:
+                            </div>
+                            <div class="list-li__text">89</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #FBD6A8;"></span>
+                                Learn Time:
+                            </div>
+                            <div class="list-li__text">559 mins</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+                <div class="content-block">
+                    <div class="title">Answers Learned</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #F4A29C;"></span>
+                                Total Answer:
+                            </div>
+                            <div class="list-li__text">992</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #5E88C2;"></span>
+                                Learned:
+                            </div>
+                            <div class="list-li__text">28</div>
+                        </li>
+                    
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+                <div class="content-block">
+                    <div class="title">Quizzes and Exercised</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #0A4B9D;"></span>
+                                Total Quiz:
+                            </div>
+                            <div class="list-li__text">495</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #78A643;"></span>
+                                Total Attempted:
+                            </div>
+                            <div class="list-li__text">25</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #C95F35;"></span>
+                                Total Correct:
+                            </div>
+                            <div class="list-li__text">14</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #FBD6A8;"></span>
+                                Learn Time:
+                            </div>
+                            <div class="list-li__text">0 mins</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+                <div class="content-block">
+                    <div class="title">Creation</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #0A4B9D;"></span>
+                                Total Posted:
+                            </div>
+                            <div class="list-li__text">0</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #78A643;"></span>
+                                Comment/Rating:
+                            </div>
+                            <div class="list-li__text">0</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #C95F35;"></span>
+                                Total Viewed:
+                            </div>
+                            <div class="list-li__text">0</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #FBD6A8;"></span>
+                                Total Liked:
+                            </div>
+                            <div class="list-li__text">0</div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+                <div class="content-block">
+                    <div class="title">Challenge</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #0A4B9D;"></span>
+                                Total:
+                            </div>
+                            <div class="list-li__text">3</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #78A643;"></span>
+                                Win:
+                            </div>
+                            <div class="list-li__text">1</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #C95F35;"></span>
+                                Draw:
+                            </div>
+                            <div class="list-li__text">1</div>
+                        </li>
+                      
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+                <div class="content-block">
+                    <div class="title">Exam Attempted</div>
+                    <ul class="list">
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #0A4B9D;"></span>
+                                Questions:
+                            </div>
+                            <div class="list-li__text">15</div>
+                        </li>
+                        <li class="list-li">
+                            <div class="list-li__title">
+                                <span class="color-box" style="background-color: #78A643;"></span>
+                                Answered:
+                            </div>
+                            <div class="list-li__text">13</div>
+                        </li>
+                       
+                    </ul>
+                </div>
+                <!-- /.content-block -->
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://myclass.midaseclass.com/extra/theme/bower_components/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $(".main-header .account__active").on("click", function(){
+                $(".main-header .account .account-dropdown").fadeToggle('300');
+                $(".main-header .account-overlay").fadeToggle('300');
+            })
+
+            $(document).on("click", '.main-header .account-overlay', function(e){
+                $(".main-header .account .account-dropdown").fadeOut('300');
+                $(this).hide();
+            })
+
+            $(".slide-over--toggler, .slide-over__overlay").on("click", function(e){
+                e.preventDefault();
+                if($(".slide-over").hasClass('active')){
+                    $(".slide-over").removeClass("active")
+                    $("body").css({"overflow":"auto"})
+                }else{
+                    $(".slide-over").addClass("active");
+                    $("body").css({"overflow":"hidden"})
+                }
+            });
+            $(document).on("click", '.slide-over .close', function(e){
+                $(".slide-over--toggler").trigger('click')
+            })
+        })
+    </script>
+</body>
+</html>

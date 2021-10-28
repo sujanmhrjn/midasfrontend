@@ -1109,11 +1109,25 @@
                 padding-right:50px;
             }
         }
-        .question-style-3 .option.correct::after{
+        .question-style-3 .option.correct::after,
+        .question-style-4 .option.correct::after{
             background:url('/images/icon-check.svg') no-repeat center center/ contain;
         }
-        .question-style-3 .option.wrong::after{
+        .question-style-3 .option.wrong::after,
+        .question-style-4 .option.wrong::after{
             background:url('/images/icon-wrong.svg') no-repeat center center/ contain;
+        }
+        
+        .question-style-4 .question__with-audio{
+            width:100%;
+        }
+        .question-style-4 .options{
+            max-width:350px;
+            margin:20px auto 0;
+        }
+        .question-style-4 .options .option{
+            padding-left:0;
+            padding-right:0;
         }
        
         .action-button {
@@ -1959,6 +1973,73 @@
                                             </div> -->
 
                                             <p>Tap on the option for correct answer</p>
+                                        </div>
+                                        <div class="action-button">
+                                            <button type="button" class="btn">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M8.5 12.7998L14.2 18.3998C14.6 18.7998 15.2 18.7998 15.6 18.3998C16 17.9998 16 17.3998 15.6 16.9998L10.7 11.9998L15.6 6.9998C16 6.5998 16 5.9998 15.6 5.5998C15.4 5.3998 15.2 5.2998 14.9 5.2998C14.6 5.2998 14.4 5.3998 14.2 5.5998L8.5 11.1998C8.1 11.6998 8.1 12.2998 8.5 12.7998C8.5 12.6998 8.5 12.6998 8.5 12.7998V12.7998Z" fill="#9B9B9B"/>
+                                                </svg>
+                                                Prev
+                                            </button>
+                                            <button type="button" class="btn active">
+                                                Next
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.172 18.6572C8.97425 18.6571 8.78095 18.5985 8.61654 18.4886C8.45213 18.3787 8.32399 18.2225 8.24832 18.0398C8.17265 17.8571 8.15285 17.6561 8.19141 17.4621C8.22998 17.2682 8.32519 17.09 8.465 16.9502L13.415 12.0002L8.465 7.05018C8.28284 6.86158 8.18205 6.60898 8.18432 6.34678C8.1866 6.08458 8.29177 5.83377 8.47718 5.64836C8.66259 5.46295 8.9134 5.35778 9.1756 5.35551C9.43779 5.35323 9.69039 5.45402 9.879 5.63618L15.535 11.2932C15.7225 11.4807 15.8278 11.735 15.8278 12.0002C15.8278 12.2653 15.7225 12.5197 15.535 12.7072L9.88 18.3642C9.78726 18.4572 9.67706 18.5309 9.55573 18.5812C9.4344 18.6315 9.30433 18.6573 9.173 18.6572H9.172Z" fill="#9B9B9B"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item__note">
+                                    <p>Please take a quick practiice on the follwing questions based on Graviition and Newton’s Law of Gravitation</p>
+                                </div>
+                            </div>
+
+                            <div class="item" >
+                                <div class="question-style question-style-4">
+                                    <div class="item__content">
+                                        <div class="item-type">Question 1 of 7</div>
+                                        <h2 class="question">A tigger Chatters</h2>
+                                        <div class="question__with-audio">
+                                            <div class="question-image">
+                                                <img src="/images/image-tiger.png"/>
+                                            </div>
+
+                                            <div class="question-audio">
+                                                <div class="audio-play">
+                                                    <img src="/images/icon-audio.svg"/>
+                                                </div>
+                                                <div class="audio-stop">
+                                                    <img src="/images/icon-stop.svg"/>
+                                                </div>
+
+                                                <div class="audio-status"></div>
+
+                                                <div class="audio-player">
+                                                    <audio  seekable src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"></audio>
+                                                </div>
+                                            </div>
+
+                                            <p>Tap on the image to listen</p>
+
+
+                                            <div class="options row">
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option correct">
+                                                        <p>
+                                                            True
+                                                        </p>
+                                                    </div>
+                                                  
+                                                </div>
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option wrong">
+                                                        <p>
+                                                            False
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="action-button">
                                             <button type="button" class="btn">

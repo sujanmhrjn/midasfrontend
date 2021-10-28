@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://myclass.midaseclass.com/extra/theme/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -747,11 +748,17 @@
         .modal-dialog{
             width:100%;
             margin:0;
+            
         }
         .modal-dialog .modal-content{
             border:none;
             box-shadow: none;
             min-height:100vh;
+            overflow: auto;
+            max-height: 100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
         }
         .modal-content .close{
             height:20px;
@@ -779,16 +786,24 @@
                 padding:5px;
             }
         }
-        .carousel{
-            height:100%;
+        #video-carousel.carousel{
+            width:100%;
         }
         .carousel-inner {
             max-width:1024px;
             margin:0 auto;
             padding:20px;
             width:100%;
-            height:100%;
+            overflow: auto;
+            
         
+        }
+
+        @media screen and (min-width:767px){
+            /* .carousel-inner{
+                display: flex;
+                align-items: center;
+            } */
         }
         .carousel-inner .item{
 
@@ -796,7 +811,7 @@
             width:100%;
             padding:20px 0;
             text-align:center;
-            height:100%;
+
             transition:all 0.4s
            
         }
@@ -835,6 +850,7 @@
             align-items: center;
             width:100%;
             font-family: 'Poppins', sans-serif;
+
         }
 
         .carousel-control{
@@ -886,6 +902,248 @@
                 max-width:60px;
             }
             
+        }
+        #quiz-carousel .option{
+            background-color: #E5E5E5;
+            color:#4E4C4C;
+            position:relative;
+            padding:10px 42px;
+            border-radius: 4px;
+            min-height:60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            cursor: pointer;
+            width:100%;
+        }
+        #quiz-carousel .option p{
+            margin-bottom:0;
+        }
+        #quiz-carousel .option .count{
+            position: absolute;
+            top:50%;
+            left:16px;
+            transform:translateY(-50%)
+            
+        }
+
+        #quiz-carousel .option.correct{
+            background-color:#CFFFD1;
+            border:1px solid #5CC353;
+            color:#578620;
+        }
+
+        #quiz-carousel .option.wrong{
+            background-color:#F4A29C;
+            border:1px solid #FF6565;
+            color:#8A4040;
+        }
+
+        .question-style .item__content{
+            border:1px solid #fefefe;
+            box-shadow:0 0 10px 0  rgba(0,0,0,0.11);
+            height:auto;
+            flex-direction: column;
+            padding:20px;
+            border-radius: 8px;
+            position: relative;
+         
+        }
+        @media screen and (min-width:767px){
+            .question-style .item__content{
+                padding:40px;
+            }
+        }
+        .question-style .item__content .item-type{
+            position: absolute;
+            top:-16px;
+            left:0;
+            right:0;
+            max-width:200px;
+            display: inline-block;
+            margin:0 auto;
+        }
+        .item__note{
+            margin-top:50px;
+            font-size:14px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .question-style h2{
+            font-size:18px;
+            font-family: Raleway, sans-serif;
+            font-weight:700;
+            padding-bottom:16px;
+            line-height: 1.4;
+            border-bottom:1px solid #dedede;
+            margin-bottom:30px;
+            width:100%;
+        }
+
+        .question-style .option{
+            font-size:14px;
+            margin-bottom:30px;
+        }
+        .question-style .option::after{
+            content:"";
+            display: block;
+            height:14px;
+            width:14px;
+           
+            position: absolute;
+            right:16px;
+            top:50%;
+            transform:translateY(-50%)
+        }
+
+        .question-style-1 .option.correct::after{
+            background:url('/images/icon-check.svg') no-repeat center center/ contain;
+        }
+        .question-style-1 .option.wrong::after{
+            background:url('/images/icon-wrong.svg') no-repeat center center/ contain;
+        }
+
+  
+
+        .question-style .row{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .question-style div[class^="col-"]{
+            float:none
+        }
+
+        @media screen and (min-width:992px){
+            .question-style .col-lg-6{
+                max-width:50%;
+                flex:0 0 50%;
+                width:100%;
+            }
+        }
+
+        .question-style .question__with-audio .question-image{
+            display: inline-block;
+            padding: 10px;
+            border:1px solid #dedede;
+            border-radius: 6px;
+        }
+
+        .question-audio{
+            padding:10px;
+            cursor: pointer;
+            position:relative;
+         
+        }
+        .question-audio .audio-play,
+        .question-audio .audio-stop{
+            height:30px;
+            width:30px;
+         
+            position:relative;
+            margin:0 auto;
+            
+        }
+        .question-audio .audio-play img,
+        .question-audio .audio-stop img{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            left:0;
+            right:0;
+            display:inline-block;
+            margin:0 auto;
+        }
+        .question-audio .audio-stop{
+            display:none;
+        }
+        .question-audio .audio-status{
+            background-color:#dedede;
+            padding:4px 20px;
+            font-size:12px;
+            border-radius:20px;
+            position:absolute;
+            min-width:200px;
+            left:50%;
+            top:100%;
+            transform: translateX(-50%);
+        
+            display:none;
+        }
+        .question-audio .audio-status.is-playing{
+            background-color:#CFFFD1;
+            border:1px solid #5CC353;
+            color:#578620;
+        }
+        .question-audio .audio-status.is-stopped{
+            background-color:#F4A29C;
+            border:1px solid #FF6565;
+            color:#8A4040;
+        }
+
+        .question-style-3 .option-image{
+            height:70px;
+            width:70px;
+            border:1px solid #dedede;
+            background-color:#fff;
+            overflow:hidden;
+            border-radius: 5px;
+            margin-right:16px;
+        }
+        .question-style-3 .option-image img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            
+        }
+
+        #quiz-carousel .question-style-3 .option{
+            padding:10px 15px;
+            padding-right:40px;
+           
+        }
+        @media screen and (min-width:992px){
+            #quiz-carousel .question-style-3 .question__with-audio{
+                max-width: 700px;
+                padding-left: 50px;
+                padding-right:50px;
+            }
+        }
+        .question-style-3 .option.correct::after{
+            background:url('/images/icon-check.svg') no-repeat center center/ contain;
+        }
+        .question-style-3 .option.wrong::after{
+            background:url('/images/icon-wrong.svg') no-repeat center center/ contain;
+        }
+       
+        .action-button {
+            padding:10px 0 0;
+        }
+        .action-button .btn{
+            display:inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #D9D9D9;
+            font-size:14px;
+            padding:10px 15px;
+            border-radius:4px;
+            margin:0 5px;
+        }
+        @media screen and (min-width:767px){
+            .action-button .btn{
+                margin:0 10px;
+            }
+        }
+        .action-button .btn.active{
+            background-color:#0C4CA1;
+
+            color:#fff;
+        }
+        .action-button .btn.active svg *{
+            fill:#fff;
+        }
+        .action-button .btn.active:hover{
+            background-color: #063470;
         }
     </style>
 </head>
@@ -1055,7 +1313,7 @@
                         </div>
                     </div>
                     <!-- /.card -->
-                    <div class="card">
+                    <div class="card" data-toggle="modal" data-target="#quiz-modal">
                         <div class="card-content">
                             <div class="card-icon">
                                 <img src="/images/ic_thumbnail_quiz.png" alt="quiz"/>
@@ -1450,7 +1708,7 @@
                         </svg>
                             
                     </button>
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <div id="video-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
                         <!-- Indicators -->
                 
                     
@@ -1503,10 +1761,10 @@
                         </div>
                     
                         <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                        <a class="left carousel-control" href="#video-carousel" data-slide="prev">
                             <img src="images/icon-arrow-left.svg"/>
                         </a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                        <a class="right carousel-control" href="#video-carousel" data-slide="next">
                             <img src="images/icon-arrow-right.svg"/>
                         </a>
                     </div>
@@ -1515,6 +1773,232 @@
             </div>
         </div>
     <!-- Modal -->
+
+     <!-- Modal -->
+     <div id="quiz-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+    
+        <!-- Modal content-->
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal">
+                    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5662 17.5001L5.59558 27.4707L7.52933 29.4045L17.5 19.4338L27.4706 29.4045L29.4043 27.4707L19.4337 17.5001L29.4043 7.52945L27.4706 5.5957L17.5 15.5663L7.52933 5.5957L5.59558 7.52945L15.5662 17.5001Z" fill="#FF6565"/>
+                    </svg>
+                        
+                </button>
+                <div id="quiz-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                    <!-- Indicators -->
+            
+                
+                    <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                       
+                            <div class="item active" >
+                                <div class="question-style question-style-1">
+                                    <div class="item__content">
+                                        <div class="item-type">Question 1 of 3</div>
+                                        <h2 class="question">If the gravitational attraction of the earth suddenly disappears, which of the following statements will be true?</h2>
+                                        <div class="options row">
+                                            <div class="col-xs-12 col-lg-6">
+                                                <div class="option wrong">
+                                                    <p>
+                                                        <span class="count">A.</span>
+                                                        The weight of the body will become zezro but the mass will remain same
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-lg-6">
+                                                <div class="option">
+                                                    <p>
+                                                        <span class="count">B.</span>
+                                                        The weight of the body will become zezro but the mass will remain same
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-lg-6">
+                                                <div class="option">
+                                                    <p>
+                                                        <span class="count">C.</span>
+                                                        Both mass and weight become zero
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-lg-6">
+                                                <div class="option correct">
+                                                    <p>
+                                                        <span class="count">D.</span>
+                                                        Neither mass nor weight becomes zero
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="action-button">
+                                            <button type="button" class="btn">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M8.5 12.7998L14.2 18.3998C14.6 18.7998 15.2 18.7998 15.6 18.3998C16 17.9998 16 17.3998 15.6 16.9998L10.7 11.9998L15.6 6.9998C16 6.5998 16 5.9998 15.6 5.5998C15.4 5.3998 15.2 5.2998 14.9 5.2998C14.6 5.2998 14.4 5.3998 14.2 5.5998L8.5 11.1998C8.1 11.6998 8.1 12.2998 8.5 12.7998C8.5 12.6998 8.5 12.6998 8.5 12.7998V12.7998Z" fill="#9B9B9B"/>
+                                                </svg>
+                                                Prev
+                                            </button>
+                                            <button type="button" class="btn active">
+                                                Next
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.172 18.6572C8.97425 18.6571 8.78095 18.5985 8.61654 18.4886C8.45213 18.3787 8.32399 18.2225 8.24832 18.0398C8.17265 17.8571 8.15285 17.6561 8.19141 17.4621C8.22998 17.2682 8.32519 17.09 8.465 16.9502L13.415 12.0002L8.465 7.05018C8.28284 6.86158 8.18205 6.60898 8.18432 6.34678C8.1866 6.08458 8.29177 5.83377 8.47718 5.64836C8.66259 5.46295 8.9134 5.35778 9.1756 5.35551C9.43779 5.35323 9.69039 5.45402 9.879 5.63618L15.535 11.2932C15.7225 11.4807 15.8278 11.735 15.8278 12.0002C15.8278 12.2653 15.7225 12.5197 15.535 12.7072L9.88 18.3642C9.78726 18.4572 9.67706 18.5309 9.55573 18.5812C9.4344 18.6315 9.30433 18.6573 9.173 18.6572H9.172Z" fill="#9B9B9B"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="item__note">
+                                        <p>Please take a quick practiice on the follwing questions based on Graviition and Newton’s Law of Gravitation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="item" >
+                                <div class="question-style question-style-1">
+                                    <div class="item__content">
+                                        <div class="item-type">Question 2 of 3</div>
+                                        <h2 class="question">What is this?</h2>
+                                        <div class="question__with-audio">
+                                            <div class="question-image">
+                                                <img src="/images/image01.png"/>
+                                            </div>
+
+                                            <div class="question-audio">
+                                                <div class="audio-play">
+                                                    <img src="/images/icon-audio.svg"/>
+                                                </div>
+                                                <div class="audio-stop">
+                                                    <img src="/images/icon-stop.svg"/>
+                                                </div>
+
+                                                <div class="audio-status"></div>
+
+                                                <div class="audio-player">
+                                                    <audio  seekable src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"></audio>
+                                                </div>
+                                            </div>
+
+                                            <p>Tap on the image to listen</p>
+                                        </div>
+                                        <div class="action-button">
+                                            <button type="button" class="btn">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M8.5 12.7998L14.2 18.3998C14.6 18.7998 15.2 18.7998 15.6 18.3998C16 17.9998 16 17.3998 15.6 16.9998L10.7 11.9998L15.6 6.9998C16 6.5998 16 5.9998 15.6 5.5998C15.4 5.3998 15.2 5.2998 14.9 5.2998C14.6 5.2998 14.4 5.3998 14.2 5.5998L8.5 11.1998C8.1 11.6998 8.1 12.2998 8.5 12.7998C8.5 12.6998 8.5 12.6998 8.5 12.7998V12.7998Z" fill="#9B9B9B"/>
+                                                </svg>
+                                                Prev
+                                            </button>
+                                            <button type="button" class="btn active">
+                                                Next
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.172 18.6572C8.97425 18.6571 8.78095 18.5985 8.61654 18.4886C8.45213 18.3787 8.32399 18.2225 8.24832 18.0398C8.17265 17.8571 8.15285 17.6561 8.19141 17.4621C8.22998 17.2682 8.32519 17.09 8.465 16.9502L13.415 12.0002L8.465 7.05018C8.28284 6.86158 8.18205 6.60898 8.18432 6.34678C8.1866 6.08458 8.29177 5.83377 8.47718 5.64836C8.66259 5.46295 8.9134 5.35778 9.1756 5.35551C9.43779 5.35323 9.69039 5.45402 9.879 5.63618L15.535 11.2932C15.7225 11.4807 15.8278 11.735 15.8278 12.0002C15.8278 12.2653 15.7225 12.5197 15.535 12.7072L9.88 18.3642C9.78726 18.4572 9.67706 18.5309 9.55573 18.5812C9.4344 18.6315 9.30433 18.6573 9.173 18.6572H9.172Z" fill="#9B9B9B"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="item__note">
+                                        <p>Please take a quick practiice on the follwing questions based on Graviition and Newton’s Law of Gravitation</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="item" >
+                                <div class="question-style question-style-3">
+                                    <div class="item__content">
+                                        <div class="item-type">Question 3 of 3</div>
+                                        <h2 class="question">Which is not your body part?</h2>
+                                        <div class="question__with-audio">
+                                            <div class="options row">
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option wrong">
+                                                        <div class="option-image">
+                                                            <img src="images/image-hand.png"/>
+                                                        </div>
+                                                        <p>
+                                                            Hand
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option">
+                                                        <div class="option-image">
+                                                            <img src="images/image-head.png"/>
+                                                        </div>
+                                                        <p>
+                                                            Head
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option">
+                                                        <div class="option-image">
+                                                            <img src="images/image-stomach.png"/>
+                                                        </div>
+                                                        <p>
+                                                            Stomach
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-lg-6">
+                                                    <div class="option correct">
+                                                        <div class="option-image">
+                                                            <img src="images/image-tail.png"/>
+                                                        </div>
+                                                        <p>
+                                                            Tail
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="question-audio">
+                                    
+                                                <div class="audio-player">
+                                                    <audio  seekable src="https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_1MG.mp3"></audio>
+                                                </div>
+                                            </div> -->
+
+                                            <p>Tap on the option for correct answer</p>
+                                        </div>
+                                        <div class="action-button">
+                                            <button type="button" class="btn">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M8.5 12.7998L14.2 18.3998C14.6 18.7998 15.2 18.7998 15.6 18.3998C16 17.9998 16 17.3998 15.6 16.9998L10.7 11.9998L15.6 6.9998C16 6.5998 16 5.9998 15.6 5.5998C15.4 5.3998 15.2 5.2998 14.9 5.2998C14.6 5.2998 14.4 5.3998 14.2 5.5998L8.5 11.1998C8.1 11.6998 8.1 12.2998 8.5 12.7998C8.5 12.6998 8.5 12.6998 8.5 12.7998V12.7998Z" fill="#9B9B9B"/>
+                                                </svg>
+                                                Prev
+                                            </button>
+                                            <button type="button" class="btn active">
+                                                Next
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9.172 18.6572C8.97425 18.6571 8.78095 18.5985 8.61654 18.4886C8.45213 18.3787 8.32399 18.2225 8.24832 18.0398C8.17265 17.8571 8.15285 17.6561 8.19141 17.4621C8.22998 17.2682 8.32519 17.09 8.465 16.9502L13.415 12.0002L8.465 7.05018C8.28284 6.86158 8.18205 6.60898 8.18432 6.34678C8.1866 6.08458 8.29177 5.83377 8.47718 5.64836C8.66259 5.46295 8.9134 5.35778 9.1756 5.35551C9.43779 5.35323 9.69039 5.45402 9.879 5.63618L15.535 11.2932C15.7225 11.4807 15.8278 11.735 15.8278 12.0002C15.8278 12.2653 15.7225 12.5197 15.535 12.7072L9.88 18.3642C9.78726 18.4572 9.67706 18.5309 9.55573 18.5812C9.4344 18.6315 9.30433 18.6573 9.173 18.6572H9.172Z" fill="#9B9B9B"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item__note">
+                                    <p>Please take a quick practiice on the follwing questions based on Graviition and Newton’s Law of Gravitation</p>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                
+                    </div>
+                
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#quiz-carousel" data-slide="prev">
+                        <img src="images/icon-arrow-left.svg"/>
+                    </a>
+                    <a class="right carousel-control" href="#quiz-carousel" data-slide="next">
+                        <img src="images/icon-arrow-right.svg"/>
+                    </a>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+<!-- Modal -->
 
 
     <script src="https://myclass.midaseclass.com/extra/theme/bower_components/jquery/dist/jquery.min.js"></script>
@@ -1561,6 +2045,79 @@
                 $(".card").removeClass("active")
                 $(this).toggleClass("active")
             })
+
+            
+
+            $('.modal').on('shown.bs.modal', function () {
+                $(document).find('.carousel').carousel()
+            })
+
+            var audioPlayer =  new Audio();
+            var timer;
+            var parent;
+            
+            $(document).on("click",'.question-audio .audio-play', function(){
+                parent = $(this).parent();
+                clearTimeout(timer);
+                parent.find('.audio-status').hide().removeClass("is-stopped");
+                var audioSource = $(this).parent().find("audio").attr('src');
+                audioPlayer.src=audioSource
+                $(this).hide();
+              
+                parent.find('.audio-stop').show();
+                
+                parent.find('.audio-status').fadeIn(400).addClass("is-playing").text("Audio is Playing");
+                timer = setTimeout(function(){
+                    parent.find('.audio-status').removeClass("is-playing").fadeOut()
+                }, 4000)
+                audioPlayer.play();
+              
+           
+            });
+
+            $(document).on("click",'.question-audio .audio-stop', function(){
+                clearTimeout(timer);
+                parent.find('.audio-status').hide().removeClass("is-playing");
+                $(this).hide();
+                $(this).parent().find('.audio-play').show();
+                parent.find('.audio-status').fadeIn(400).addClass("is-stopped").text("Audio has stopped");
+                timer = setTimeout(function(){
+                    parent.find('.audio-status').removeClass("is-stopped").fadeOut(400)
+                }, 4000)
+                audioPlayer.pause();
+                audioPlayer.load()
+
+            })
+           
+                audioPlayer.addEventListener('ended', () => {
+                    audioPlayer.pause();
+                    audioPlayer.load();
+                    parent.find('.audio-stop').hide();
+                    parent.find('.audio-play').show();
+                
+                
+                })
+            
+
+            $(".carousel").on('slide.bs.carousel', function () {
+                $(document).find('audio').each(function(){
+                  $(this)[0].pause();
+                  $(this)[0].load()
+                })
+            })
+
+            var audioElement =  new Audio();
+            $(document).on("click",".question-style-3 .option", function(){
+                console.log($(this))
+                if($(this).hasClass("correct")){
+                    audioElement.src="correct-answer-sound-effect.mp3"
+                   
+                }else{
+                    audioElement.src="wrong-answer-sound-effect.mp3"
+                }
+                audioElement.play()
+            })
+            
         })
     </script>
 </body>
